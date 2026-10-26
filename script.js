@@ -22,9 +22,26 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold:0.12});
 $$('.reveal').forEach(el => observer.observe(el));
 
-// Responsive mobile navigation.
-$('#menuToggle').addEventListener('click', () => $('.nav-links').classList.toggle('open'));
-$$('.nav-links a').forEach(link => link.addEventListener('click', () => $('.nav-links').classList.remove('open')));
+// Accessible, touch-friendly mobile navigation.
+const menuButton = $('#menuToggle');
+const navMenu = $('.nav-links');
+if (menuButton && navMenu) {
+  menuButton.setAttribute('aria-controls', 'primary-navigation');
+  menuButton.setAttribute('aria-expanded', 'false');
+  const setMenuOpen = open => {
+    navMenu.classList.toggle('open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    menuButton.textContent = open ? '✕' : '☰';
+  };
+  menuButton.addEventListener('click', () => setMenuOpen(!navMenu.classList.contains('open')));
+  $$('.nav-links a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('click', event => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(event.target) && !menuButton.contains(event.target)) setMenuOpen(false);
+  });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenuOpen(false); });
+  window.addEventListener('resize', () => { if (innerWidth > 700) setMenuOpen(false); });
+}
 
 // Project detail modal.
 const projectDetails = {
@@ -281,4 +298,48 @@ window.addEventListener('scroll', () => {
     animate();
     document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else animate();});
   }catch(e){canvas.style.display='none';console.warn('Extra WebGL scene unavailable; CSS 3D enhancements remain enabled.',e);}
+
+  // Scroll choreography: elements gain depth as each section enters the viewport.
+  // Uses a single requestAnimationFrame loop for smoother scrolling on mobile.
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const touchQuery = window.matchMedia('(hover: none), (pointer: coarse)');
+  let scrollFrame = 0;
+  function updateScrollDepth(){
+    scrollFrame = 0;
+    if (motionPaused || motionQuery.matches) return;
+    const vh = window.innerHeight || 1;
+    document.querySelectorAll('.depth-section, .contact').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > vh + 100) return;
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const offset = (rect.top + rect.height * .5 - vh * .5) / vh;
+      section.style.setProperty('--section-progress', Math.max(0, Math.min(1, progress)).toFixed(3));
+      const ring = section.querySelector('.section-depth-ring');
+      if (ring) ring.style.translate = `0 ${(offset * -24).toFixed(1)}px`;
+      const shape = section.querySelector('.work-depth-shape');
+      if (shape) shape.style.translate = `0 ${(offset * -34).toFixed(1)}px`;
+      const cube = section.querySelector('.stack-depth-cube');
+      if (cube) cube.style.translate = `0 ${(offset * -20).toFixed(1)}px`;
+    });
+    // Tiny depth shift for project visuals as they move through the viewport.
+    document.querySelectorAll('.project-card').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) return;
+      const center = (rect.top + rect.height / 2 - vh / 2) / vh;
+      card.style.setProperty('--scroll-depth', `${(-center * 9).toFixed(1)}px`);
+    });
+  }
+  function requestScrollDepth(){ if(!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollDepth); }
+  window.addEventListener('scroll', requestScrollDepth, {passive:true});
+  window.addEventListener('resize', requestScrollDepth, {passive:true});
+  requestScrollDepth();
+
+  // On touch screens, keep 3D card effects subtle and let native scrolling win.
+  if (touchQuery.matches) {
+    document.body.classList.add('touch-device');
+    document.querySelectorAll('.project-card').forEach(card => card.addEventListener('touchstart', () => {
+      card.classList.add('touch-active');
+      window.setTimeout(() => card.classList.remove('touch-active'), 500);
+    }, {passive:true}));
+  }
 })();

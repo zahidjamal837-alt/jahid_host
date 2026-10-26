@@ -1,19 +1,14 @@
-# Jahid Jamal — 3D Portfolio (Frontend Demo)
+# Jahid Jamal — Cinematic 3D Portfolio
+
+A frontend-only portfolio with animated Three.js geometry, moving particles, scroll-linked depth/parallax, 3D project-card tilt, section reveals, responsive mobile navigation, and a motion toggle.
 
 ## Run locally
-1. Unzip the folder.
-2. Open `index.html` in a modern browser, or use VS Code Live Server for the best local testing experience.
-3. Internet is needed for Google Fonts and the Three.js CDN 3D star field. CSS-based 3D visuals and most interactions still work if Three.js fails to load.
+1. Open this folder in VS Code.
+2. Run `index.html` with the Live Server extension, or serve the folder using any local static server.
+3. The Three.js library and Google Fonts are loaded from CDNs, so an internet connection is needed for those assets.
 
-## Included
-- Responsive one-page portfolio
-- Animated Three.js star field and CSS 3D orb
-- Scroll progress, reveal animations, pointer parallax
-- Interactive project detail modals
-- Mobile navigation and copy-email interaction
-- No backend, database, build step, or paid API
+## Publish to GitHub Pages
+Commit and push the files to the configured `main` branch at the repository root. GitHub Pages should deploy after the workflow completes.
 
 ## Before publishing
-- Confirm contact email and domain.
-- Replace project summaries with verified details and add actual repository/demo links.
-- This demo uses a text-built visual identity, not a personal photo.
+Check that the contact email in `index.html` is the address you want publicly displayed. Review project descriptions and links so they accurately reflect your work.
