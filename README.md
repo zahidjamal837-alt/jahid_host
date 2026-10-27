@@ -1,53 +1,34 @@
-# Jahid Jamal — Cinematic 3D Portfolio
+# Jahid Jamal — Immersive 3D Portfolio v2
 
-A responsive, static portfolio with a live Three.js sculpture, orbiting geometry, particle field, scroll reveals, hover tilt project cards, and a mobile navigation.
+This is the npm/Vite edition of the portfolio, rebuilt from the supplied visual reference with a more detailed Three.js scene, layered procedural mountain ranges, a planet with atmospheric glow and orbit rings, floating rock shards, a reflective water plane, an orbiting crystal sculpture, 3D project cards, and improved text hierarchy.
 
-## Run it
-- Extract the ZIP.
-- Open `index.html` in a modern browser with an internet connection.
-- For local development, use VS Code Live Server if available (no npm required).
+## Requirements
+- Node.js (current LTS recommended)
+- npm
+- A modern browser with WebGL support
 
-The 3D scene imports Three.js from jsDelivr and fonts from Google Fonts. No package installation or build step is required.
+## Run locally
+```bash
+npm install
+npm run dev
+```
+Open the local URL printed by Vite.
 
-## Deploy to GitHub Pages
-1. Upload the contents of this folder to the root of your repository.
-2. In GitHub, open **Settings → Pages**.
-3. Select **Deploy from a branch**, branch `main`, folder `/(root)`, then Save.
-4. Wait for the Pages build to finish.
+## Build for deployment
+```bash
+npm run build
+npm run preview
+```
+Vite outputs the production site into `dist/`.
+
+## GitHub Pages
+For GitHub Pages, set the Vite `base` option to your repository path in `vite.config.js` if the site is published at `username.github.io/repository-name/`. If using a custom domain or root-domain repository, `/` is generally appropriate. Then run `npm run build` and publish `dist/`.
+
+## Before publishing
+Replace `your-email@example.com`, the generic GitHub URL, and generic LinkedIn URL in `index.html`. Review project descriptions and technology tags for accuracy.
 
 ## Structure
-```text
-index.html
-assets/
-  css/style.css
-  js/main.js
-  js/scene.js
-  data/projects.js
-README.md
-```
-
-## Customise
-- Edit name, text, sections and contact email in `index.html`.
-- Change colours and responsive layout in `assets/css/style.css`.
-- Adjust 3D geometry, lighting and animation in `assets/js/scene.js`.
-- Project data reference is in `assets/data/projects.js`.
-
-## Notes
-- This is a frontend-only portfolio; contact currently opens an email draft.
-- The main 3D scene requires WebGL and an internet connection to load Three.js.
-- If the 3D scene does not appear when opening `file://`, run it with VS Code Live Server or deploy to GitHub Pages. No npm installation is needed.
-
-
-## User-provided Everest image
-The image you supplied is included at `assets/images/everest-hero.jpeg` and is used as a full-screen, gently animated background layer. Keep the relative file path intact when deploying to GitHub Pages. No npm install or build step is required for this static version.
-
-
-## Cyberpunk visual edition
-This edition adds a neon cyan/magenta cyberpunk HUD aesthetic, scanline texture, angular controls, neon project cards, and a tinted version of the supplied Everest artwork. It remains a static site; no npm install or build step is required.
-
-
-Motion update: this edition keeps the cyberpunk 3D sculpture, orbit rings, text, and background stable. No continuous spinning, floating, cursor-following glow, or animated text; only subtle hover styling and normal smooth scrolling remain.
-
-
-### 3D scene note
-The hero sculpture uses Three.js from a CDN and renders a real WebGL 3D scene. It is deliberately not continuously rotating. Open `index.html` with an internet connection, or publish the folder to GitHub Pages. No npm install or build command is required. If a browser blocks WebGL or the CDN, the 3D scene may not render.
+- `index.html` — semantic page structure
+- `src/main.js` — Three.js scenes, project data rendering and interactions
+- `src/style.css` — responsive cinematic visual design
+- `package.json` — npm scripts and dependencies
