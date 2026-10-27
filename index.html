@@ -1,51 +1,16 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#07131c" />
-  <meta name="description" content="An immersive, scroll-driven expedition through the Everest region." />
-  <title>EVEREST — Beyond the Clouds</title>
-  <link rel="preconnect" href="https://tiles.openfreemap.org" />
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" />
-</head>
-<body>
-  <div class="grain" aria-hidden="true"></div>
-  <div id="map" aria-label="Interactive 3D terrain map of the Everest region"></div>
-  <div class="map-vignette" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="Everest expedition home"><span class="brand-mark">E</span><span>FIELD NOTES <i>/</i> HIMALAYA</span></a>
-    <div class="top-center"><span class="live-dot"></span> LIVE TERRAIN EXPERIENCE</div>
-    <button class="sound-button" id="motionToggle" type="button"><span class="toggle-indicator"></span><span id="motionLabel">MOTION ON</span></button>
-  </header>
-  <aside class="left-rail" aria-label="Expedition progress"><span class="rail-label">THE ASCENT</span><div class="rail-track"><div id="railFill"></div></div><span id="railCount">01 <i>/ 09</i></span></aside>
-  <aside class="telemetry">
-    <div class="telemetry-label"><span class="live-dot"></span> EXPEDITION TELEMETRY</div>
-    <div class="telemetry-main"><span id="telemetryElevation">2,860</span><small>METRES ASL</small></div>
-    <div class="telemetry-grid"><div><span>STAGE</span><b id="telemetryDay">01 / 12</b></div><div><span>ROUTE</span><b id="telemetryDistance">0 KM</b></div></div>
-    <div class="telemetry-rule"></div><div class="telemetry-coords" id="telemetryCoords">27.6879° N&nbsp; 86.7314° E</div>
-  </aside>
-  <main id="journey">
-    <section class="chapter hero" data-stop="0" id="top">
-      <div class="hero-copy"><p class="eyebrow"><span>27°59′ N</span><b>·</b><span>86°55′ E</span><b>·</b><span>NEPAL</span></p>
-        <h1>BEYOND<br><em>THE</em> CLOUDS<span class="title-period">.</span></h1>
-        <p class="hero-sub">An expedition into the world's most extraordinary vertical wilderness.</p>
-        <div class="hero-bottom"><span class="scroll-cue"><i></i> SCROLL TO BEGIN</span><span class="hero-index">EVEREST BASE CAMP TREK <b>—</b> 12 DAYS</span></div>
-      </div>
-      <div class="hero-side"><span class="side-number">8848.86</span><span class="side-caption">METRES ABOVE<br>THE ORDINARY</span><div class="side-line"></div><span class="side-vertical">SAGARMATHA NATIONAL PARK</span></div>
-    </section>
-    <section class="chapter stop-chapter" data-stop="1"><div class="chapter-number">01 <span>— APPROACH</span></div><div class="chapter-copy"><p class="eyebrow">THE GATEWAY / 2,860 M</p><h2>LUKLA<span class="period">.</span></h2><p class="chapter-text">The mountains begin before the trail does. A short runway clings to the slope, the air turns sharp, and the first footsteps point north into the Khumbu.</p><div class="chapter-meta"><div><span>WALK TO NEXT</span><b>3–4 HOURS</b></div><div><span>OVERNIGHT</span><b>PHAKDING</b></div></div></div><div class="chapter-foot"><span>01 / 09</span><span>THE JOURNEY STARTS HERE</span></div></section>
-    <section class="chapter stop-chapter" data-stop="2"><div class="chapter-number">02 <span>— RIVER VALLEY</span></div><div class="chapter-copy"><p class="eyebrow">DUDH KOSHI / 3,440 M</p><h2>NAMCHE<br>BAZAAR<span class="period">.</span></h2><p class="chapter-text">A horseshoe of colour tucked into a mountainside. Prayer flags cross the valley, suspension bridges swing above glacial water, and the horizon grows teeth.</p><div class="chapter-meta"><div><span>WALK TO NEXT</span><b>5–6 HOURS</b></div><div><span>ACCLIMATIZE</span><b>REST DAY</b></div></div></div><div class="chapter-foot"><span>02 / 09</span><span>LET THE BODY ADAPT</span></div></section>
-    <section class="chapter stop-chapter" data-stop="3"><div class="chapter-number">03 <span>— ABOVE THE TREELINE</span></div><div class="chapter-copy"><p class="eyebrow">KHUMJUNG RIDGE / 3,860 M</p><h2>TENGBOCHE<span class="period">.</span></h2><p class="chapter-text">The forest thins. The monastery sits in a vast amphitheatre of peaks, and the scale of the Himalaya becomes impossible to ignore.</p><div class="chapter-meta"><div><span>WALK TO NEXT</span><b>5–6 HOURS</b></div><div><span>OVERNIGHT</span><b>DINGBOCHE</b></div></div></div><div class="chapter-foot"><span>03 / 09</span><span>THE AIR GETS THINNER</span></div></section>
-    <section class="chapter stop-chapter" data-stop="4"><div class="chapter-number">04 <span>— HIGH KHUMBU</span></div><div class="chapter-copy"><p class="eyebrow">IMJA VALLEY / 4,410 M</p><h2>DINGBOCHE<span class="period">.</span></h2><p class="chapter-text">A stone village beneath immense walls of rock and ice. This is where patience becomes part of the route: slow steps, rest, water, and another acclimatization day.</p><div class="chapter-meta"><div><span>WALK TO NEXT</span><b>4–5 HOURS</b></div><div><span>ACCLIMATIZE</span><b>REST DAY</b></div></div></div><div class="chapter-foot"><span>04 / 09</span><span>ASCEND SLOWLY</span></div></section>
-    <section class="chapter stop-chapter" data-stop="5"><div class="chapter-number">05 <span>— THE LAST SETTLEMENTS</span></div><div class="chapter-copy"><p class="eyebrow">KHUMBU GLACIER / 4,940 M</p><h2>LOB​UCHE<span class="period">.</span></h2><p class="chapter-text">The landscape becomes mineral and austere. Moraines replace fields; the trail winds through the debris of a moving glacier beneath the giants.</p><div class="chapter-meta"><div><span>WALK TO NEXT</span><b>3–4 HOURS</b></div><div><span>OVERNIGHT</span><b>GORAK SHEP</b></div></div></div><div class="chapter-foot"><span>05 / 09</span><span>ON THE EDGE OF ICE</span></div></section>
-    <section class="chapter stop-chapter" data-stop="6"><div class="chapter-number">06 <span>— GLACIAL FRONTIER</span></div><div class="chapter-copy"><p class="eyebrow">KHUMBU ICEFALL / 5,164 M</p><h2>BASE CAMP<span class="period">.</span></h2><p class="chapter-text">A camp on shifting ice, surrounded by the immense machinery of the glacier. The destination is not a summit, but a threshold into a world of expedition history.</p><div class="chapter-meta"><div><span>FROM GORAK SHEP</span><b>3–4 HOURS RETURN</b></div><div><span>ALTITUDE</span><b>5,364 M APPROX.</b></div></div></div><div class="chapter-foot"><span>06 / 09</span><span>THE EDGE OF THE KNOWN</span></div></section>
-    <section class="chapter stop-chapter summit" data-stop="7"><div class="chapter-number">07 <span>— FIRST LIGHT</span></div><div class="chapter-copy"><p class="eyebrow">KALA PATTHAR / 5,644 M</p><h2>THE<br>WITNESS<span class="period">.</span></h2><p class="chapter-text">Before sunrise, the ridge is a silhouette. Then the first light catches Everest's summit pyramid and the entire horizon begins to glow.</p><div class="chapter-meta"><div><span>ASCENT</span><b>2–3 HOURS</b></div><div><span>BEST LIGHT</span><b>DAWN</b></div></div></div><div class="chapter-foot"><span>07 / 09</span><span>THE VIEW THAT STAYS</span></div></section>
-    <section class="chapter final-chapter" data-stop="8"><div class="final-card"><p class="eyebrow">FIELD NOTES / END OF ASCENT</p><h2>THE MOUNTAIN<br>DOESN'T END<br><em>AT THE MAP.</em></h2><p>Turn back carefully. Descend with respect. The journey is measured not only in metres gained, but in the patience to return safely.</p><div class="final-stats"><div><b>12–14</b><span>TYPICAL DAYS</span></div><div><b>130 KM</b><span>APPROX. ROUND TRIP</span></div><div><b>5,644 M</b><span>HIGH POINT / KALA PATTHAR</span></div></div><button id="replayButton" class="replay-button">↺ &nbsp; REPLAY EXPEDITION</button></div><div class="chapter-foot"><span>EVEREST / NEPAL</span><span>LEAVE NO TRACE</span></div></section>
-  </main>
-  <div class="map-controls"><button id="resetView" aria-label="Reset map view">⌖ <span>RESET VIEW</span></button><button id="terrainToggle" aria-label="Toggle terrain exaggeration">△ <span>TERRAIN ×1.4</span></button></div>
-  <div class="location-chip"><span class="chip-dot"></span><div><small>NOW EXPLORING</small><b id="activeLocation">EVEREST REGION</b></div><span class="chip-altitude" id="chipAltitude">2,860 M</span></div>
-  <footer class="site-footer"><span>FIELD NOTES © 2026</span><span>MAP DATA © OPENSTREETMAP CONTRIBUTORS · TERRAIN AWS OPEN DATA</span><span>NOT A NAVIGATION TOOL</span></footer>
-  <script type="module" src="/src/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d1013" />
+    <meta name="description" content="Scroll through the Everest Base Camp trek on a real 3D terrain map: Lukla to Kala Patthar, with elevation profile, itinerary and altitude safety notes." />
+    <title>Everest 3D Trek — An Immersive Himalayan Expedition</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript><p style="padding:2rem;color:#fff">This experience needs JavaScript and WebGL.</p></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

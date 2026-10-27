@@ -1,0 +1,49 @@
+.hero-title { position: absolute; left: clamp(1.2rem, 4vw, 3.5rem); top: clamp(4rem, 12vh, 8rem); pointer-events: none; text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6); }
+.hero-title h1 { font-size: clamp(4.5rem, 14vw, 11rem); letter-spacing: -0.04em; font-weight: 300; }
+.hero-title h1 span { font-size: 0.3em; margin-left: 0.1em; color: var(--ember); }
+.hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--snow); }
+.stage::after { content: ""; position: absolute; inset: auto 0 0 0; height: 45%; pointer-events: none; background: linear-gradient(transparent, rgba(8, 11, 14, 0.85)); z-index: 1; }
+.controls { position: absolute; top: 1rem; right: 1rem; z-index: 4; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+.ctl-row { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: flex-end; }
+.controls button, .ctl-select { background: var(--panel); color: var(--snow); border: 1px solid var(--line); border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; cursor: pointer; backdrop-filter: blur(8px); transition: background 0.2s, border-color 0.2s; }
+.controls button:hover, .ctl-select:hover { border-color: var(--glacier); }
+.controls button[aria-pressed="true"] { border-color: var(--ember); color: var(--ember); }
+.map-status { position: absolute; z-index: 5; left: 50%; top: 1rem; transform: translateX(-50%); max-width: min(34rem, 90%); padding: 0.6rem 1rem; border-radius: 8px; background: var(--panel); border: 1px solid var(--line); font-size: 0.85rem; text-align: center; }
+.map-status[data-level="warn"] { border-color: var(--ember); }
+.map-status[hidden] { display: none; }
+.stage-bottom { position: absolute; z-index: 3; inset: auto 1rem 1rem 1rem; display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 1rem; align-items: end; pointer-events: none; }
+.stage-bottom > * { pointer-events: auto; }
+.dashboard { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.2rem; backdrop-filter: blur(10px); }
+.dash-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.dash-label { margin: 0; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.dash-stop { margin: 0.2rem 0 0; font: 400 1.5rem/1.1 var(--serif); }
+.dash-ele { font: 300 2.2rem/1 var(--serif); color: var(--ember); } .dash-ele small { font: 0.8rem var(--sans); color: var(--muted); margin-left: 0.2rem; }
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; margin: 0.8rem 0 0.4rem; }
+.dash-grid dt { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.dash-grid dd { margin: 0; font-size: 0.88rem; line-height: 1.35; }
+.dash-grid .wide { grid-column: 1 / -1; }
+.dash-note { margin: 0; font-size: 0.66rem; color: var(--muted); }
+.profile svg { width: 100%; height: auto; display: block; overflow: visible; }
+.profile-compact { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 0.6rem 0.8rem; backdrop-filter: blur(10px); }
+.profile .grid { stroke: var(--line); stroke-dasharray: 3 4; } .profile .axis { fill: var(--muted); font: 10px var(--sans); }
+.profile .base-line { fill: none; stroke: var(--glacier); stroke-width: 1.8; opacity: 0.7; }
+.profile .prog-line { fill: none; stroke: var(--ember); stroke-width: 2.6; }
+.profile .dot { fill: var(--bg); stroke: var(--snow); stroke-width: 1.5; transition: r 0.2s, fill 0.2s; }
+.profile .hit { fill: transparent; cursor: pointer; } .profile .ppin { cursor: pointer; outline: none; }
+.profile .ppin:hover .dot, .profile .ppin:focus-visible .dot { stroke: var(--ember); }
+.profile .ppin.is-active .dot { fill: var(--ember); stroke: var(--ember); r: 6.5; }
+.profile .pin-name { fill: var(--snow); font: 10px var(--sans); } .profile .stem { stroke: var(--line); }
+.profile .cursor line { stroke: var(--ember); stroke-width: 1; opacity: 0.6; } .profile .cursor circle { fill: var(--ember); stroke: #fff; stroke-width: 1.5; }
+.profile .cursor-text { fill: var(--ember); font: 600 11px var(--sans); }
+.profile-full { margin: 2rem 0 0.8rem; padding: 1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, 0.02); }
+/* map markers */
+.pin { position: relative; width: 22px; height: 22px; padding: 0; border: 0; background: none; cursor: pointer; }
+.pin-dot { position: absolute; inset: 5px; border-radius: 50%; background: var(--snow); border: 2px solid #0d1013; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4); transition: transform 0.25s, background 0.25s; }
+.pin-goal .pin-dot, .pin-viewpoint .pin-dot { background: var(--glacier); }
+.pin-label { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); white-space: nowrap; font: 600 0.78rem/1.2 var(--sans); background: var(--panel); padding: 0.25rem 0.5rem; border-radius: 6px; border: 1px solid var(--line); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.pin-label small { display: block; font-weight: 400; color: var(--muted); }
+.pin:hover .pin-label, .pin:focus-visible .pin-label, .pin.is-active .pin-label { opacity: 1; }
+.pin.is-active .pin-dot { background: var(--ember); transform: scale(1.5); }
+.walker { width: 16px; height: 16px; border-radius: 50%; background: var(--ember); border: 2px solid #fff; pointer-events: none; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 138, 61, 0.7); } 100% { box-shadow: 0 0 0 18px rgba(255, 138, 61, 0); } }
+.maplibregl-ctrl-attrib { font-size: 10px; }

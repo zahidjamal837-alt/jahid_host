@@ -1,40 +1,65 @@
-# EVEREST — Beyond the Clouds
+# Everest 3D Trek
 
-A scroll-driven Everest Base Camp expedition website using **MapLibre GL JS** and real geographic elevation tiles. The terrain is streamed from public online services; this is not an offline 3D model and it needs an internet connection.
+A scroll-driven, cinematic 3D map of the Everest Base Camp trek (Lukla → Everest Base Camp → Kala Patthar → return).
+Real elevation data (open terrain tiles) rendered with MapLibre GL JS; the camera follows your scroll position.
 
-## Run on macOS
+## Prerequisites
+Node.js 18+ (tested for syntax on Node 22) and npm. **No API key, account or credit card is needed.**
 
-**Do not double-click `index.html`.** That opens the page with `file://`, which prevents Vite's JavaScript module imports and package resolution from working. This is why the page may appear unstyled and the map does not appear.
-
-### Easiest method
-1. Install Node.js LTS from https://nodejs.org/ if it is not installed.
-2. Double-click `START-HERE.command` (you may need to right-click → Open the first time).
-3. Wait for Vite to print a local address, usually `http://localhost:5173/`.
-4. Open that address in your browser. Keep the terminal window open while using the site.
-
-### Terminal method
-```bash
-cd ~/Desktop/everest-beyond-clouds
-npm install
-npm run dev
-```
-Open the local URL shown by Vite.
-
-## Build for production
+## Install and run
 ```bash
 npm install
-npm run build
-npm run preview
+npm run dev        # http://localhost:5173
+npm run build      # type-check + production build into dist/
+npm run preview    # serve dist/ locally
 ```
 
-## How the map works
-- MapLibre GL JS renders the geographic map and 3D terrain.
-- OpenFreeMap Positron provides the pale, arctic-style basemap; a hillshade overlay and exaggerated elevation add definition to ridges and glacial valleys.
-- AWS Terrain Tiles provides Terrarium-encoded elevation data.
-- The landing page opens on a wide 3D panorama of the Everest/Khumbu region, with the map visible behind the full page. Scrolling between chapters moves the map camera to route waypoints; clicking map markers scrolls to the corresponding chapter.
-- The route connects known waypoint coordinates with an approximate line. It is **not a verified GPS trail** and must not be used for navigation.
+## Configuration (all optional)
+Copy `.env.example` to `.env.local`. You can change the elevation tile URL/encoding, terrain exaggeration, or add a raster basemap.
+Provider settings live in `src/config.ts`; the map style is in `src/map/terrain.ts`.
 
-## Notes
-- Internet access is required for map style, terrain tiles, fonts, and map libraries.
-- Public services may change availability or impose usage policies. Review their terms and retain required attribution.
-- This project is an illustrative web experience, not a substitute for a guide, current trail information, or safety planning.
+## Structure
+```
+src/
+  data/      route.ts (approximate corridor + elevations), stops.ts, itinerary.ts (chapters + camera poses), plan.ts
+  lib/       geo.ts (haversine, interpolation), journey.ts (scroll → camera/route frame, pure & testable)
+  map/       createMap.ts, terrain.ts (style + DEM), cameraController.ts, routeLayers.ts, markers.ts
+  ui/        shell.ts, dashboard.ts, elevationProfile.ts (custom SVG), controls.ts
+  styles/    global.css, layout.css, map.css, responsive.css
+  main.ts    wiring
+```
+How scroll drives the camera: `ScrollMapper` converts scroll position into a fractional chapter index; `frameAt()` blends the
+camera pose (zoom/pitch/bearing) and moves the centre *along the route polyline*; `CameraController` eases the real map toward it
+once per animation frame with `jumpTo()` (no overlapping `flyTo` animations).
+Dragging/rotating/zooming the map pauses scroll-following; the next scroll or the **Reset camera** button resumes it.
+Map zoom needs Ctrl+scroll (or two fingers on touch) so normal scrolling never gets trapped by the map.
+
+## Features
+- Real 3D terrain (raster-dem) + DEM hillshade; sticky map on desktop, sticky top map on mobile
+- 13 chapters: intro, Lukla, Phakding, Monjo, Namche, Tengboche, Dingboche, Lobuche, Gorak Shep, Base Camp, Kala Patthar, descent (Pheriche → Namche → Lukla), summary
+- Live dashboard (stop, interpolated elevation, trek day, next leg, remaining distance, progress, lodging)
+- Interactive SVG elevation profile (click/keyboard a stop to scroll the journey there), compact on the map + full in the summary
+- Route explorer: fly-to select, outbound/return/both, route and marker toggles, reset camera, free exploration
+- Animated orange progress line, active marker, top progress bar
+- Acclimatization (Namche, Dingboche), altitude illness, weather notes, typical day-by-day plan with walking / acclimatization / optional / return labels
+- Loading + error states (no WebGL, terrain tile failure → flat fallback with message), `prefers-reduced-motion` support, skip link, aria labels
+
+## Deployment (free static hosting)
+`npm run build`, then upload `dist/` to GitHub Pages, Netlify, Cloudflare Pages or Vercel (static). `base: './'` makes sub-path hosting work.
+
+## Data sources and attribution
+See `LICENSES-AND-ATTRIBUTION.md`. Terrain: Mapzen/AWS Terrain Tiles (public AWS Open Data). Keep the on-map attribution.
+
+## Known limitations
+- **Route geometry is approximate**: hand-placed waypoints along the known corridor, not a surveyed GPS track. Distances (≈ 88 km round trip along the polyline) under-count real trail length (commonly quoted ≈ 130 km). Not for navigation.
+  To improve: replace `src/data/route.ts` nodes with a track from an openly licensed GPX (e.g. OpenStreetMap, ODbL).
+- Town coordinates/elevations are rounded, commonly published values; sources differ by tens of metres. Walking times are typical estimates.
+- Default style is hillshade only (no place names/roads) to avoid provider usage restrictions; add a basemap via `.env` if you accept its terms.
+- The AWS terrain tile bucket is a free public dataset, but it carries no service-level guarantee; heavy traffic should use your own tile host/CDN.
+- Cooperative gestures (Ctrl+scroll) are used on the map by design.
+- **Not tested in the build environment** (no network): `npm install`, `vite build`, and any in-browser behaviour (rendering, scroll feel, tile loading, mobile layout). See below.
+
+## What was verified when this was packaged
+- TypeScript type-check passes with MapLibre/GSAP typed as `any` stubs (real types were unavailable offline).
+- Route/camera logic executed in Node: stops ordered along the path, progress 0→100%, camera centre continuous across a scroll sweep.
+Everything else needs a first run on your machine; please report/fix any issue `npm run build` surfaces.

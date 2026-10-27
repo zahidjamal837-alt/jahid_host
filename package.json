@@ -1,9 +1,21 @@
 {
-  "name": "everest-beyond-clouds",
+  "name": "everest-3d-trek",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": { "dev": "vite --host 0.0.0.0", "build": "vite build", "preview": "vite preview --host 0.0.0.0" },
-  "dependencies": { "maplibre-gl": "^5.6.2" },
-  "devDependencies": { "vite": "^6.3.5" }
+  "description": "Scroll-driven 3D map of the Everest Base Camp trek (MapLibre GL JS + open terrain tiles)",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "maplibre-gl": "^4.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vite": "^5.4.8"
+  }
 }
