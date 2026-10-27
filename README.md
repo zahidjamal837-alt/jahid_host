@@ -1,34 +1,26 @@
-# Jahid Jamal — Immersive 3D Portfolio v2
+# Jahid Jamal — Immersive 3D Portfolio
 
-This is the npm/Vite edition of the portfolio, rebuilt from the supplied visual reference with a more detailed Three.js scene, layered procedural mountain ranges, a planet with atmospheric glow and orbit rings, floating rock shards, a reflective water plane, an orbiting crystal sculpture, 3D project cards, and improved text hierarchy.
+A responsive static portfolio inspired by your reference image. It uses procedural Three.js scenes in the hero, about, and contact sections, plus animated layered project cards and pointer-based 3D tilt.
 
-## Requirements
-- Node.js (current LTS recommended)
-- npm
-- A modern browser with WebGL support
+## No installation required
+Extract the ZIP and open `index.html` in a modern browser. No npm, Node.js, build step, or local server is required. Internet is needed for the Three.js and Google Fonts CDN resources.
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
-Open the local URL printed by Vite.
+## Personalize before publishing
+In `index.html`, replace:
+- `your-email@example.com`
+- the generic GitHub profile URL
+- the generic LinkedIn profile URL
 
-## Build for deployment
-```bash
-npm run build
-npm run preview
-```
-Vite outputs the production site into `dist/`.
+Check project descriptions and technologies so they accurately represent your work.
 
 ## GitHub Pages
-For GitHub Pages, set the Vite `base` option to your repository path in `vite.config.js` if the site is published at `username.github.io/repository-name/`. If using a custom domain or root-domain repository, `/` is generally appropriate. Then run `npm run build` and publish `dist/`.
-
-## Before publishing
-Replace `your-email@example.com`, the generic GitHub URL, and generic LinkedIn URL in `index.html`. Review project descriptions and technology tags for accuracy.
+Upload the contents of this folder to the repository root, commit to `main`, then choose **Settings → Pages → Deploy from a branch → main → /(root)**.
 
 ## Structure
-- `index.html` — semantic page structure
-- `src/main.js` — Three.js scenes, project data rendering and interactions
-- `src/style.css` — responsive cinematic visual design
-- `package.json` — npm scripts and dependencies
+- `index.html` — page structure
+- `assets/css/style.css` — visual styling and responsive layouts
+- `assets/data/projects.js` — project content
+- `assets/js/scene.js` — procedural Three.js scenes
+- `assets/js/main.js` — project rendering, scroll progress, reveal and card interactions
+
+Note: 3D scenes require a browser with WebGL support and internet access to load the Three.js CDN. The visuals are generated in code rather than used as a static screenshot background.

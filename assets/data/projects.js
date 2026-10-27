@@ -1,0 +1,4 @@
+window.PORTFOLIO_PROJECTS=[
+{number:"01",title:"Eventify",subtitle:"Event Management System",description:"A role-based event platform focused on event discovery, bookings, authentication and API-driven workflows.",tags:["PHP","MySQL","PDO","REST API"],art:"event",status:"BACKEND / WEB"},
+{number:"02",title:"AWS Infrastructure",subtitle:"Cloud Deployment Project",description:"An academic cloud deployment exploring static hosting and repeatable infrastructure provisioning with AWS tools.",tags:["AWS","CloudFormation","S3","CLI"],art:"aws",status:"CLOUD / DEVOPS"},
+{number:"03",title:"Everest Arctic",subtitle:"Immersive Trekking Experience",description:"A concept for a mountain experience combining visual storytelling, mapping and interactive 3D.",tags:["JavaScript","Maps","3D","Visuals"],art:"everest",status:"EXPERIMENT / WEB"}];

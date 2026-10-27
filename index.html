@@ -1,54 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#040914">
-  <meta name="description" content="Jahid Jamal — backend developer, builder and explorer.">
-  <title>Jahid Jamal — Beyond the Interface</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050914"><meta name="description" content="Jahid Jamal — Computer Science student and backend developer">
+<title>Jahid Jamal — Digital Realms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="grain"></div><div class="scroll-progress" id="scrollProgress"></div>
-  <header class="topbar">
-    <a class="identity" href="#home" aria-label="Jahid Jamal home"><span class="identity-icon">J<span>.</span></span><span class="identity-name">JAHID JAMAL<small>COMPUTER SCIENCE / PORTFOLIO</small></span></a>
-    <div class="live-status"><i></i> OPEN TO INTERESTING PROJECTS</div>
-  </header>
-  <main>
-    <section class="hero" id="home">
-      <canvas id="heroCanvas" aria-label="Interactive 3D mountain and planet scene"></canvas>
-      <div class="hero-shade"></div><div class="hero-grid"></div>
-      <div class="hero-copy">
-        <p class="eyebrow"><span>01 / INTRODUCTION</span><i></i> NEPAL · EARTH</p>
-        <h1><span>JAHID</span><span class="outline-word">JAMAL<span class="cyan-dot">.</span></span></h1>
-        <p class="hero-title">Backend Developer <b>·</b> Builder <b>·</b> Explorer</p>
-        <p class="hero-description">I build the systems behind useful digital experiences — from reliable backend APIs to immersive web worlds.</p>
-        <div class="hero-actions"><a class="button button-bright" href="#projects">Explore my work <span>↗</span></a><a class="button button-quiet" href="#about">Get to know me <span>↓</span></a></div>
-        <div class="scroll-prompt"><span class="mouse-shape"><i></i></span><span>SCROLL TO EXPLORE<small>THE WORLD IS NOT FLAT</small></span></div>
-      </div>
-      <div class="floating-spec spec-a"><span class="spec-icon">⌘</span><span><b>BACKEND DEVELOPMENT</b><small>APIs · Databases · Systems</small></span><i>01</i></div>
-      <div class="floating-spec spec-b"><span class="spec-icon">◈</span><span><b>CLOUD COMPUTING</b><small>AWS · Infrastructure · Deploy</small></span><i>02</i></div>
-      <div class="floating-spec spec-c"><span class="spec-icon">✳</span><span><b>INTERACTIVE WEB</b><small>3D · Maps · Visualization</small></span><i>03</i></div>
-      <div class="hero-footer"><span>27°42' N / 85°19' E</span><span>SCROLL TO DESCEND <b>↓</b></span><span>SCENE 001 — 004</span></div>
-    </section>
-    <section class="projects section" id="projects">
-      <div class="section-backdrop" aria-hidden="true"><div class="back-orbit orbit-one"></div><div class="back-orbit orbit-two"></div><div class="back-planet"></div></div>
-      <div class="section-heading reveal"><p class="eyebrow"><span>02 / SELECTED WORK</span><i></i></p><h2>IDEAS MADE<br><span class="gradient-text">TANGIBLE.</span></h2><p>Real ideas. Real code.<br>Progress, one build at a time.</p></div>
-      <div class="project-grid" id="projectGrid"></div>
-      <div class="section-caption"><span>SELECTED EXPERIMENTS & PROJECTS</span><span>HOVER TO SHIFT PERSPECTIVE <b>↗</b></span></div>
-    </section>
-    <section class="about section" id="about">
-      <div class="about-visual"><canvas id="aboutCanvas" aria-label="Interactive 3D crystalline sculpture"></canvas><div class="visual-label label-north">SYSTEMS THINKING <b>↗</b></div><div class="visual-label label-south">CURIOSITY IN MOTION <b>✳</b></div><div class="visual-coordinates">FIG. 03<br>CRYSTALLINE / STUDY</div></div>
-      <div class="about-copy reveal"><p class="eyebrow"><span>03 / THE PERSON BEHIND THE CODE</span><i></i></p><h2>CURIOUS MIND.<br><span class="gradient-text">BUILDER'S HANDS.</span></h2><p class="about-lead">I’m a Computer Science student at Herald College Kathmandu, interested in how thoughtful software can turn complex problems into useful experiences.</p><p class="about-detail">My focus is backend development, databases, APIs and cloud infrastructure. I also enjoy exploring interactive 3D interfaces, mapping and visual storytelling. I learn by building, testing, breaking things, and making them better.</p>
-        <div class="education-panel"><div class="education-symbol">✦</div><div class="education-text"><small>EDUCATION / CURRENT</small><b>BSc (Hons) Computer Science</b><p>Herald College Kathmandu, Nepal</p></div><span class="panel-arrow">↗</span></div>
-        <div class="skills-title">TOOLS IN MY WORKBENCH <span>08 CAPABILITIES</span></div><div class="skill-list"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML / CSS</span><span>REST APIs</span><span>Git</span><span>AWS</span><span>Three.js</span></div>
-      </div>
-    </section>
-    <section class="contact section" id="contact"><canvas id="contactCanvas" aria-label="Animated 3D planet and orbit scene"></canvas><div class="contact-shade"></div><div class="contact-copy reveal"><p class="eyebrow"><span>04 / THE NEXT CHAPTER</span><i></i></p><h2>LET’S BUILD<br><span class="gradient-text">SOMETHING<br>MEANINGFUL.</span></h2><p class="contact-intro">Have an interesting idea, a challenging problem, or just want to talk technology? I’m always open to a good conversation.</p><div class="contact-cards"><a href="mailto:your-email@example.com" class="contact-card"><span class="contact-symbol">✉</span><span><small>EMAIL</small><b>Start a conversation</b></span><i>↗</i></a><a href="https://github.com/" target="_blank" rel="noreferrer" class="contact-card"><span class="contact-symbol">⌘</span><span><small>GITHUB</small><b>Explore code</b></span><i>↗</i></a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="contact-card"><span class="contact-symbol">in</span><span><small>LINKEDIN</small><b>Connect professionally</b></span><i>↗</i></a></div></div><div class="contact-location">KATHMANDU, NEPAL<br><span>27°42' N — 85°19' E</span></div></section>
-  </main>
-  <footer><a class="identity footer-identity" href="#home"><span class="identity-icon">J<span>.</span></span><span class="identity-name">JAHID JAMAL<small>DESIGNED TO EXPLORE</small></span></a><span class="footer-note">BUILT WITH CURIOSITY <b>✳</b> © <span id="year"></span></span><a class="back-top" href="#home">BACK TO TOP ↑</a></footer>
-  <script type="module" src="/src/main.js"></script>
-</body>
-</html>
+<div class="noise"></div><div class="progress" id="progress"></div>
+<header class="topline"><a class="brand" href="#home"><span class="brand-mark">J.</span><span>JAHID JAMAL<small>PORTFOLIO / 2026</small></span></a><div class="status"><i></i> AVAILABLE FOR COLLABORATION</div></header>
+<main>
+<section class="hero section" id="home"><canvas id="hero3d"></canvas><div class="hero-vignette"></div>
+<div class="hero-copy reveal"><p class="eyebrow"><span>01</span> COMPUTER SCIENCE STUDENT</p><h1>JAHID<br><em>JAMAL</em><span class="period">.</span></h1><p class="hero-role">Backend Developer <b>·</b> Builder <b>·</b> Explorer</p><p class="hero-desc">I build the systems behind useful digital experiences — from reliable backend APIs to immersive web worlds.</p><div class="actions"><a class="button primary" href="#projects">Explore my work <span>↗</span></a><a class="button ghost" href="#about">About me <span>↓</span></a></div><div class="scroll-cue"><span class="mouse"><i></i></span> SCROLL TO EXPLORE</div></div>
+<div class="hero-label label-one"><span>◇</span><div><b>BACKEND SYSTEMS</b><small>APIs · Databases · Auth</small></div></div><div class="hero-label label-two"><span>◉</span><div><b>CLOUD COMPUTING</b><small>AWS · Deployment · Infra</small></div></div><div class="hero-label label-three"><span>✳</span><div><b>INTERACTIVE WEB</b><small>3D · Maps · Experiences</small></div></div>
+<div class="hero-bottom"><span>NEPAL / 27.7° N</span><span>SCROLL TO ENTER THE WORLD <b>↓</b></span><span>01 — 04</span></div></section>
+<section class="projects section" id="projects"><div class="section-orbit"><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div><div class="orbit-core"></div></div><div class="section-head reveal"><p class="eyebrow"><span>02</span> SELECTED WORK</p><h2>BUILT WITH<br><em>INTENTION.</em></h2><p>Real ideas. Real code.<br>Always learning.</p></div><div class="project-grid" id="projectGrid"></div><div class="section-foot"><span>PROJECT ARCHIVE</span><span>HOVER / MOVE TO INTERACT ↗</span></div></section>
+<section class="about section" id="about"><div class="about-visual"><canvas id="about3d"></canvas><div class="axis-tag tag-top">SYSTEMS THINKING <span>↗</span></div><div class="axis-tag tag-bottom">CURIOUS BY DEFAULT <span>✳</span></div></div>
+<div class="about-copy reveal"><p class="eyebrow"><span>03</span> A LITTLE ABOUT ME</p><h2>CURIOUS MIND.<br><em>BUILDER'S HANDS.</em></h2><p class="about-intro">I'm a Computer Science student at Herald College Kathmandu, interested in how thoughtful software can turn complex problems into useful experiences.</p><p class="about-body">My focus is backend development, databases, APIs and cloud infrastructure. I also enjoy exploring interactive 3D interfaces, mapping and visual storytelling. I learn by building, testing, breaking things, and making them better.</p>
+<div class="education-card glass-card"><span class="edu-icon">✦</span><div><small>EDUCATION</small><b>BSc (Hons) Computer Science</b><p>Herald College Kathmandu, Nepal</p></div><span class="edu-date">IN PROGRESS ↗</span></div><div class="skill-label">TOOLS IN MY WORKBENCH</div><div class="skills"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML / CSS</span><span>REST APIs</span><span>Git</span><span>AWS</span><span>Three.js</span></div></div></section>
+<section class="contact section" id="contact"><canvas id="contact3d"></canvas><div class="contact-content reveal"><p class="eyebrow"><span>04</span> THE NEXT CHAPTER</p><h2>LET'S BUILD<br><em>SOMETHING MEANINGFUL.</em></h2><p>Have an interesting idea, a challenging problem, or just want to talk technology? Let's connect.</p><div class="contact-links"><a href="mailto:your-email@example.com" class="contact-link"><span class="contact-icon">✉</span><span><small>EMAIL</small><b>Start a conversation</b></span><i>↗</i></a><a href="https://github.com/" target="_blank" rel="noreferrer" class="contact-link"><span class="contact-icon">⌘</span><span><small>GITHUB</small><b>Explore code</b></span><i>↗</i></a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="contact-link"><span class="contact-icon">in</span><span><small>LINKEDIN</small><b>Connect professionally</b></span><i>↗</i></a></div></div><div class="contact-coordinate">27°42' N &nbsp; 85°19' E<br><span>KATHMANDU, NEPAL</span></div></section>
+</main><footer><a class="brand" href="#home"><span class="brand-mark">J.</span><span>JAHID JAMAL<small>DESIGNED TO EXPLORE</small></span></a><span>BUILT WITH CURIOSITY <b>✳</b> © <span id="year"></span></span><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script><script src="assets/data/projects.js"></script><script src="assets/js/scene.js"></script><script src="assets/js/main.js"></script>
+</body></html>
